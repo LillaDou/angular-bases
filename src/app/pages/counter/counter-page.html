@@ -1,0 +1,16 @@
+<h1>Counter: {{ counter }} </h1>
+<h1>Counter signal: {{ counterSignal() }} </h1>
+<!--Las señales no son más que funciones que tienen que ser invocadas con los ()  -->
+<!-- Sabemos que son señales por diferentes razones: 
+        - El nombre suele ser siempre descriptivo (signal) 
+        - Si ponemos el cursor sobre una función normal como la de increaseBy(),
+            nos indica que es de tipo void. Con las señales nos indican, entre otros tipos, 
+            cosas como writableSignal. -->
+
+<hr/>
+
+<button (click)="increaseBy(1)">+1</button>
+
+<button (click)="increaseBy(-1)">-1</button>
+
+<button (click)="resetCounter()">Reset</button>
