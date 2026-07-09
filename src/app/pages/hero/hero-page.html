@@ -8,11 +8,18 @@
   <dd>{{ age() }}</dd>
 
   <td>Método:</td>
-  <dd>{{ getHeroDescription() }}</dd>
+  <dd>{{ heroDescription() }}</dd>
 
   <td>Capitalizado:</td>
   <!-- ! Intentar  -->
-  <dd> {{ name().toLocaleUpperCase() }} </dd>
+  <!--* Solución de la tarea original -->
+  <!-- <dd> {{ name().toLocaleUpperCase() }} </dd> --> 
+  <!--* Solución con señales computadas -->
+  <!-- <dd> {{ capitalizedName() }} </dd> -->
+  <!--* Solución con pipes. Para ello, necesitamos importar el pipe en el .ts -->
+  <dd> {{ name() | uppercase }} </dd>
+
+
 </dl>
 
 <button (click)="changeHero()" class="btn btn-primary mx-2">
