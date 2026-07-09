@@ -9,6 +9,8 @@ export class CounterPageComponent {
     counter = 10;
     counterSignal = signal( 10 ); //! --> Esto es una señal
 
+    constructor() {}
+
     increaseBy( value: number ) {
         this.counter += value; 
 
