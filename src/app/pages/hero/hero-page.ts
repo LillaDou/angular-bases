@@ -1,7 +1,10 @@
+//* Las señales son maneras actualizadas de cambiar el estado de la aplicación 
+
 //* Una señal computada es una señal común de solo lectura (read-only) cuyos valores derivan de otras señales.
 //* Por lo tanto, pueden cambiar si sus dependencias (las señales) cambian.
 //* A las señales normales (writable signals) puedes asignarle valores (por ejemplo, el .set() )
-//* Pero las señales computadas solo cogen los valores de sus dependencias (las señales que contiene)
+//* Pero las señales computadas solo cogen los valores de sus dependencias (las señales que contiene).
+//* Esto es bueno para evitar cambios o modificaciones involuntarias.
 
 import { UpperCasePipe } from "@angular/common";
 import { Component, computed, signal } from "@angular/core";
