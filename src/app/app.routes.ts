@@ -4,13 +4,19 @@ import { HeroPageComponent } from './pages/hero/hero-page';
 
 export const routes: Routes = [
 
-    {
+    { //home route
         path: '',
         component: CounterPageComponent,
     },
     {
         path: 'hero',
         component: HeroPageComponent,
+    },
+    {
+        path: '**',
+        redirectTo: '',
+        //! Si indicamos cualquier otro path en el buscador que no sea ninguno de los que tenemos aquí indicados, 
+        //! la página será redireccionada al path que nosotros queramos. Así evitamos que la página se quede en blanco
     }
 
 ];
