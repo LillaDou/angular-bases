@@ -10,16 +10,30 @@
 
     nav a {
         color: white;
-        text-decoration: none,
+        text-decoration: none;
+    }
+
+    nav a.active {
+        color: red;
+        text-decoration: underline;
     }
 </style>
 
 <nav>
     <!--* Esta es la forma original de indicar un anchor tag -->
     <!-- <a href="">Contador</a> -->
+
      <!--* En Angular se utilizan directivas para ello -->
-    <a routerLink="/">Contador</a>
-    <a routerLink="/hero">Hero</a>
+    <a  routerLink="/" 
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }">Contador</a>
+        <!-- Para que la ruta indicada en el routerLink aparezca activa, el path tiene -->
+        <!-- que ser exactamente como lo estamos definiendo. -->
+    
+
+    <a [routerLink]="['/hero']" [routerLinkActive]=" 'active' ">Hero</a>
+
+    <a [routerLink]="['/dragonball']" [routerLinkActive]=" 'active' ">Dragonball</a>
 
     <!-- OTROS -->
 
