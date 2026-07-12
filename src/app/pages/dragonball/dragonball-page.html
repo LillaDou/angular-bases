@@ -13,12 +13,19 @@
 
     <div class="col-12 col-sm-6">
         <h3>Listado:</h3>
-        <ol>
-            <li>Goku</li>
-            <li>Goku</li>
-            <li>Goku</li>
-            <li>Goku</li>
-        </ol>
+        <ul>
+            <!-- Dentro de las variables del for, indicamos el 'let idx = $index'. Con esto lo que estamos pidiendo
+             es que Angular por su cuenta nos enumere la lista que hemos hecho (teniendo en cuenta que tenemos un unordered
+             list). Dentro del span, añadimos el idx + 1. Los arreglos siempre empiezan por el número 0, y para evitar eso
+             añadimos un 1. De esta manera empieza a enumerar los diferentes characters empezando por 1. -->
+            @for (character of characters(); track character.id; let idx = $index ) {
+                <li>
+                    <span>{{ idx + 1 }} - {{ character.name }}</span>
+                    <strong class="text-danger"> ({{ character.power }})</strong>
+                </li>
+            }
+           
+        </ul>
     </div>
 
 </section>
