@@ -21,7 +21,17 @@
             @for (character of characters(); track character.id; let idx = $index ) {
                 <li>
                     <span>{{ idx + 1 }} - {{ character.name }}</span>
-                    <strong class="text-danger"> ({{ character.power }})</strong>
+                    <!-- Forma tradicional de hacer el class -->
+                    <!-- <strong class="text-danger"> ({{ character.power }})</strong> --> 
+
+                     <!-- Aquí estamos indicando que cuando se cumpla la condición de que el poder sea mayor o menor
+                      que 9000, se aplica el class.text... -->
+                    <strong
+                        [class.text-danger]="character.power > 9000"
+                        [class.text-primary]="character.power < 9000"
+                    > ({{ character.power }})</strong>
+                    <!-- También se podría hacer a través de los ngClass: 
+                     [ngClass="powerClasses()"] -->
                 </li>
             }
            

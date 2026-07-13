@@ -1,4 +1,5 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
+import { NgClass } from "../../../../node_modules/@angular/common/types/_common_module-chunk";
 
 
 interface Character {
@@ -9,7 +10,9 @@ interface Character {
 
 
 @Component({
-  imports: [],
+  imports: [
+    // NgClass
+  ],
   templateUrl: './dragonball-page.html',
 })
 export class DragonballPageComponent {
@@ -21,6 +24,11 @@ export class DragonballPageComponent {
     { id: 3, name: 'Piccolo', power: 3000 },
   ] ); 
 
-  
+  //? Ejemplo de señal computada usada para el ngClass en el html
+  // powerClasses = computed( () => {
+  //   return {
+  //     'text-danger': true,
+  //   }
+  // })
 
 }
