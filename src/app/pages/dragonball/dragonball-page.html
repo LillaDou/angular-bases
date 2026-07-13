@@ -12,27 +12,33 @@
     </div>
 
     <div class="col-12 col-sm-6">
-        <h3>Listado:</h3>
+        <h3>Listado fuertes:</h3>
         <ul>
             <!-- Dentro de las variables del for, indicamos el 'let idx = $index'. Con esto lo que estamos pidiendo
              es que Angular por su cuenta nos enumere la lista que hemos hecho (teniendo en cuenta que tenemos un unordered
              list). Dentro del span, añadimos el idx + 1. Los arreglos siempre empiezan por el número 0, y para evitar eso
              añadimos un 1. De esta manera empieza a enumerar los diferentes characters empezando por 1. -->
             @for (character of characters(); track character.id; let idx = $index ) {
-                <li>
-                    <span>{{ idx + 1 }} - {{ character.name }}</span>
-                    <!-- Forma tradicional de hacer el class -->
-                    <!-- <strong class="text-danger"> ({{ character.power }})</strong> --> 
 
-                     <!-- Aquí estamos indicando que cuando se cumpla la condición de que el poder sea mayor o menor
-                      que 9000, se aplica el class.text... -->
-                    <strong
-                        [class.text-danger]="character.power > 9000"
-                        [class.text-primary]="character.power < 9000"
-                    > ({{ character.power }})</strong>
-                    <!-- También se podría hacer a través de los ngClass: 
-                     [ngClass="powerClasses()"] -->
-                </li>
+                @if ( character.power > 500 ) {
+                    <li>
+                        <span>{{ idx + 1 }} - {{ character.name }}</span>
+                        <!-- Forma tradicional de hacer el class -->
+                        <!-- <strong class="text-danger"> ({{ character.power }})</strong> --> 
+
+                        <!-- Aquí estamos indicando que cuando se cumpla la condición de que el poder sea mayor o menor
+                        que 9000, se aplica el class.text... -->
+                        <strong
+                            [class.text-danger]="character.power > 9000"
+                            [class.text-primary]="character.power < 9000"
+                        > ({{ character.power }})</strong>
+                        <!-- También se podría hacer a través de los ngClass: 
+                        [ngClass="powerClasses()"] -->
+                    </li>
+                } @else {
+                    <li><strong>Aquí no hay nadie</strong></li>
+                }
+
             }
            
         </ul>
