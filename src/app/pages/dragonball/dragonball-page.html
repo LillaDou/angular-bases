@@ -4,11 +4,38 @@
 
 <section class="row">
     <div class="col-12 col-sm-6">
-        <h3>Agregar:</h3>
-        <input type="text" class="form-control" placeholder="Nombre">
-        <input type="number" class="form-control mt-2" placeholder="Poder">
+        <h3>Agregar: {{ name() }} </h3>
 
-        <button class="mt-2 btn btn-primary">Agregar</button>
+        <input 
+            type="text" 
+            class="form-control" 
+            placeholder="Nombre"
+            [value]="name()"
+            (change)="name.set(txtName.value)"
+            (input)="name.set(txtName.value)"
+            #txtName
+        />
+        <!-- Si queremos asignar un valor a un atributo que viene de una variable, señal...
+         utilizamos las []. Hay muchas formas de hacerlo, pero esta es una de ellas.  -->
+        <!-- El evento (change) se dispara, en este caso, cuando se hace click o se cambia el foco
+          fuera de la caja de texto -->
+        <!-- El evento (input) se dispara cuando se toca cualquier tecla. Por lo que cualquier letra
+         que se escriba en la caja de texto será reflejada en pantalla inmediatamente -->
+        <!-- El #txtName es una referencia local.  -->
+
+        <h3>{{ power()}}</h3>
+        <input 
+            type="number" 
+            class="form-control mt-2" 
+            placeholder="Poder"
+            [value]="power()"
+            (input)="power.set( +txtPower.value )"
+            #txtPower
+        />
+        <!-- El txtPower.value por su cuenta da error, ya que la caja de texto en sí espera texto (string). Para evitar esto, 
+         hacemos una transformación añadiendo + al principio de la expresión -->
+
+        <button (click)="addCharacter()" class="mt-2 btn btn-primary">Agregar</button>
     </div>
 
     <div class="col-12 col-sm-6">
