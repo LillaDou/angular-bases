@@ -5,7 +5,9 @@
 <section class="row">
     <div class="col-12 col-sm-6">
 
-        <dragonball-character-add/>
+        <dragonball-character-add
+            (newCharacter)="addCharacter($event)"/>
+        <!-- El $event es el valo del evento emitido -->
         
     </div>
 
@@ -20,3 +22,7 @@
     </div>
 
 </section>
+
+<!-- ! Los paréntesis como el (newCharacter) sirven para emitir eventos
+ ! Los corchetes como el [characters] sirven para asignar atributos
+ ! Las señales como listName sirven para cambiar el estado-->
