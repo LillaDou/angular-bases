@@ -1,6 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CharacterList } from '../../components/dragonball/character-list/character-list';
 import { CharacterAdd } from "../../components/dragonball/character-add/character-add";
+import { DragonballService } from '../../services/dragonball.service';
 
 
 interface Character {
@@ -20,20 +21,14 @@ interface Character {
 })
 export class DragonballSuperPageComponent {
 
-  name = signal('');
-  power = signal(0);
+  //*Método tradicional hacer una inyección de dependencias(servicios) en un componente
+  // constructor(
+  //       public DragonballService: DragonballService
+  // ) {}
+  //*Método recomendado: inyección de dependencias(servicios) como una propiedad,
+  //*utilizando el inject (importado de angular core) y utilizando la referencia de la clase de 
+  //*DragonballService
+  public dragonballService = inject(DragonballService)
 
-  characters = signal<Character[]>( [
-    { id: 1, name: 'Goku', power: 9001 },
-    { id: 2, name: 'Vegeta', power: 8000 },
-  ] ); 
 
-  addCharacter( character: Character) {
-    this.characters.update( (list) => [...list, character] )
-  }
-
-  resetFields() {
-    this.name.set('');
-    this.power.set(0);
-  }
 }

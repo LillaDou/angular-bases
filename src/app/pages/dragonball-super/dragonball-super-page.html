@@ -6,7 +6,7 @@
     <div class="col-12 col-sm-6">
 
         <dragonball-character-add
-            (newCharacter)="addCharacter($event)"/>
+            (newCharacter)="dragonballService.addCharacter($event)"/>
         <!-- El $event es el valo del evento emitido -->
         
     </div>
@@ -15,7 +15,7 @@
 
         <dragonball-character-list
             listName="Listado de personajes"
-            [characters]="characters()"/>
+            [characters]="dragonballService.characters()"/>
         <!-- El componente padre del character-list es el dragonball-super-page. 
          Por ello, mandamos y asignamos la señal de characters() al input.required del character-list-->
 
