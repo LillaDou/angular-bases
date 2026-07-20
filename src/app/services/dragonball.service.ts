@@ -1,6 +1,14 @@
 import { effect, Injectable, signal } from '@angular/core';
 import { Character } from '../interfaces/character.interface';
 
+const loadFromLocalStorage = (): Character[] => {
+
+  const characters = localStorage.getItem('characters');
+
+  return characters ? JSON.parse(characters) : [];
+// Si hay characters, haz el parse. Si no, devuelve un arreglo vacío.
+};
+
 
 //El injectable es un decorador que transforma la clase en un servicio. Por norma general
 //tiene el providedIn en el root. De esta manera el servicio está a nivel global de la
@@ -8,10 +16,7 @@ import { Character } from '../interfaces/character.interface';
 @Injectable({providedIn: 'root'})
 export class DragonballService {
     
-  characters = signal<Character[]>( [
-    { id: 1, name: 'Goku', power: 9001 },
-    { id: 2, name: 'Vegeta', power: 8000 },
-  ] ); 
+  characters = signal<Character[]>( loadFromLocalStorage() ); 
 
 
   //Un efecto nos va a permitir disparar un efecto o "acción secundaria"
@@ -41,3 +46,5 @@ export class DragonballService {
 
 //? El localStorage necesita siempre de un key y un value. El Key es el nombre identificativo, mientras que el value
 //? es el valor que tendrá en formato STRING. 
+//? El localStorage puede ser modificado muy fácilmente. Es por ello por lo que no hay que guardar informacíon sensible o
+//? importante en él.
